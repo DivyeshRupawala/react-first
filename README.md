@@ -1,22 +1,27 @@
 # react-first
-React JS first
+This is my first react js project. 
 
-Inside that directory, you can run several commands:
-
+# Inside that directory, you can run several commands:
+### Starts the development server.
+```sh
   npm start
-    Starts the development server.
+```
+### Bundles the app into static files for production.
+```sh
+npm run build
+```
+ * To run production build locally
+	1. npm install -g serve
+	2. serve -s build 
+	3. http://localhost:5000/
 
-  npm run build
-    Bundles the app into static files for production.
-		- To run production build locally
-			1. npm install -g serve
-			2. serve -s build 
-			3. http://localhost:5000/
-
+### Starts the test runner.
+```sh
   npm test
-    Starts the test runner.
+```
 
+### Removes this tool and copies build dependencies, configuration files and scripts into the app directory. If you do this, you can not go back!
+```sh
   npm run eject
-    Removes this tool and copies build dependencies, configuration files
-    and scripts into the app directory. If you do this, you can not go back!
+```    
 
