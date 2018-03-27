@@ -17,6 +17,15 @@ class Board extends Component {
 		this.add = this.add.bind(this);
 	}
 
+	componentWillMount() {
+		var self = this;
+		if (this.props.count) {
+			fetch(`https://baconipsum.com/api/?type=all-meat&sentences=${this.props.count}`)
+				.then(response => response.json())
+				.then(json => json[0].split('. ').forEach(sentence => self.add(sentence.substring(0,25))));
+		}
+	}
+
 	nextId() {
 		this.uniqueId = this.uniqueId || 0;
 		return this.uniqueId++;
@@ -55,21 +64,20 @@ class Board extends Component {
 	eachNote(note, i) {
 		return (
 			<Note 
-				key={i} 
-				index={i}
+				key={note.id} 
+				index={note.id}
 				onChange={this.update}
 				onRemove={this.remove}>
-				{note.note} {note.id}
+				{note.note}
 			</Note>
 		)
 	}
 
 	render() {
 		return (
-			<div className="board">
-				This is Board Component <br/>
+			<div className="board">			
 
-				{this.state.notes.map(this.eachNote)}<br/>
+				{this.state.notes.map(this.eachNote)}
 				
 				<button 
 					id="add"
